@@ -1,114 +1,178 @@
 <!doctype html>
 <html lang="en">
+    <!-- Generador de Firmas V3.0 Release by Luís Garcés -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
 
-    <title>Generador de firmas</title>
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
+    <title>Generador de Firmas</title>
 
-    <style>
+  
+<script type="text/javascript">
+        
+//<![CDATA[
+// array of possible countries in the same order as they appear in the country selection list
+var countryLists = new Array(4)
+countryLists["0"] = ["Selecciona una marca"];
+countryLists["1"] = ["4", "9", "15", "14", "10", "5", "6", "7"];
+countryLists["2"] = ["1", "11", "2", "12", "3"];
+countryLists["3"] = ["13"];
 
-html,
-body {
-  height: 100%;
+var countryLists2 = new Array(4)
+countryLists2["0"] = ["Selecciona una marca"];
+countryLists2["1"] = ["Montironi Ford Caraffa", "Montironi Ford Ventas Monseñor Pablo Cabrera", "Montironi Ford Servicio Posventa Monseñor Pablo Cabrera", "Montironi Ford Repuestos Monseñor Pablo Cabrera", "Montironi Ford Ventas Rio Cuarto", "Montironi Ford Posventa Rio Cuarto", "Montironi Ford Jesús María", "Montironi Ford Oncativo", "Montironi Ford Stand Villa Carlos Paz"];
+countryLists2["2"] = ["Montironi Fiat Ventas Cordoba", "Montironi Fiat Posventa Cordoba", "Montironi Fiat Ventas Jesus Maria", "Montironi Fiat Posventa Jesús Maria", "Montironi Fiat Oncativo"];
+countryLists2["3"] = ["Automont Hyundai"];
+
+/* CountryChange() is called from the onchange event of a select element.
+ * param selectObj - the select object which fired the on change event.
+ */
+function countryChange(selectObj) {
+	// get the index of the selected option
+	var idx = selectObj.selectedIndex;
+	// get the value of the selected option
+	var which = selectObj.options[idx].value;
+	// use the selected option value to retrieve the list of items from the coutnryLists array
+	cList = countryLists[which];
+	cText = countryLists2[which];
+	// get the country select element via its known id
+	var cSelect = document.getElementById("country");
+	// remove the current options from the country select
+	var len=cSelect.options.length;
+	while (cSelect.options.length > 0) {
+		cSelect.remove(0);
+	}
+	var newOption;
+	// create new options
+	for (var i=0; i<cList.length; i++) {
+		newOption = document.createElement("option");
+		newOption.value = cList[i];  // assumes option string and value are the same
+		newOption.text=cText[i];
+		// add the new option
+		try {
+			cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE
+		}
+		catch (e) {
+			cSelect.appendChild(newOption);
+					}
+	}
 }
+//]]>
 
-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
-}
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-.form-signin .checkbox {
-  font-weight: 400;
-}
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      
-    </style>
-
+    </script>
+    
   </head>
-  <body class="text-center">
-   <div class="container">
+  <body>
+      
+          <div class="container">
+<div class="py-2 text-center">
+    <h4>Generador de Firmas</h4></div>
+<div class="row">
+    <div class="col-md-2"></div>
+    
+    <div class="col-md-8">
+    
+    <form class="form-signin" action="result.php" method="post" target="_blank">
+  <div class="form-group">
+<label for="nombre" class="bmd-label-floating">Nombre y Apellido</label>    
+<input type="text" id="nombre" name="nombre" class="form-control" placeholder="" required="" autofocus="" autocomplete="off" style="">
+  </div>
+  <div class="form-group">
+    <label for="cargo" class="bmd-label-floating">Cargo</label>
+   <input type="text" id="cargo" name="cargo" class="form-control" placeholder="" required="" autofocus="" autocomplete="off" style="">
+  </div>
+  <div class="form-group">
+    <label for="company" class="bmd-label-floating">Seleccionar Marca</label>
+    
+<select class="form-control" id="company" name="company" onchange="countryChange(this);">
+    <option value="0"></option>
+    <option value="1">Montironi Ford</option>
+    <option value="2">Montironi Fiat</option>
+    <option value="3">Automont Hyundai</option>
+</select>
+</div>
 
+  <div class="form-group">
+    <label for="company" class="bmd-label-floating">Seleccionar Sucursal</label>
+    
+<select class="form-control" id="country" name="country">
+ 
+<!--    <option value="0"></option>
+    <option value="1">Montironi Fiat Ventas Cordoba</option>
+    <option value="11">Montironi Fiat Posventa Cordoba</option>
+    <option value="2">Montironi Fiat Ventas Jesus Maria</option>
+    <option value="12">Montironi Fiat Posventa Jesús Maria</option>
+    <option value="3">Montironi Fiat Oncativo</option>
+    
+    <option value="4">Montironi Ford Caraffa</option>
+    <option value="9">Montironi Ford Ventas Monseñor Pablo Cabrera</option>    
+    <option value="15">Montironi Ford Servicio Posventa Monseñor Pablo Cabrera</option>  Last One
+    <option value="14">Montironi Ford Repuestos Monseñor Pablo Cabrera</option>  
+    <option value="10">Montironi Ford Posventa Rio Cuarto</option>
+    <option value="5">Montironi Ford Jesús María</option>
+    <option value="6">Montironi Ford Oncativo</option>
+    <option value="7">Montironi Ford Stand Villa Carlos Paz</option>
+    
+    <option value="13">Automont Hyundai</option>   -->
+    </select>
+  
+</div>  
+
+  <div class="form-group">
+    <label for="coreo" class="bmd-label-floating">Email</label>
+    <input type="text" id="coreo" name="coreo" class="form-control" placeholder="" autofocus="" autocomplete="off" style="">
+    <small class="bmd-help">Ingresa tu dirección de correo electrónico</small>
+  </div>
+
+  <div class="form-group">
+    <label for="telf" class="bmd-label-floating">Teléfono Móvil (Opcional)</label>
+    <input type="text" id="telf" name="telf" class="form-control" placeholder="" autofocus="" autocomplete="off" style="">
+    <small class="bmd-help">Ingresa tu teléfono de contacto. Este dato es opcional.</small>
+  </div>
+  
+    <div class="form-group">
+    <label for="interno" class="bmd-label-floating">Teléfono Interno (Opcional)</label>
+    <input type="text" id="interno" name="interno" class="form-control" placeholder="" autofocus="" autocomplete="off" style="">
+    <small class="bmd-help">Ingresa el número de extensión interno a la que podrán contactarte. Este dato es opcional.</small>
+  </div>
+ <!---
+    <div class="form-group">
+    <label for="skype" class="bmd-label-floating">Skype (Opcional)</label>
+    <input type="text" id="skype" name="skype" class="form-control" placeholder="" autofocus="" autocomplete="off" style="">
+    <small class="bmd-help">Ingresa usuario de Skype. Este dato es opcional.</small>
+  </div>-->
+  <div class="form-group">
+    <div class="checkbox">
+    <label>
+      <input type="checkbox" name="separador" id="separador"> Incluir separador
+    </label></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-raised">Crear firma</button>
+</form>
+
+</div>
+
+  <div class="col-md-2"></div>
+    
+</div>
+
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
-  
-    <form class="form-signin" action="result.php" method="post">
-    <h4>Bienvenido al <br>Generador de Firmas</h4><br>
-  <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre y Apellido" required="" autofocus="" autocomplete="off" style=""><br>
-  <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Cargo" required="" autofocus="" autocomplete="off" style=""><br>
-  <input type="text" id="telf" name="telf" class="form-control" placeholder="Telefono" required="" autofocus="" autocomplete="off" style=""><br>   
-  <select class="custom-select d-block w-100" id="company" name="company" required="">
-              <option value="">Selecciona empresa...</option>
-              <option value="1">Redragon</option>
-              <option value="2">Latamly</option>
-              <option value="3">Colorful</option>
-              <option value="4">XP-PEN</option>
-            </select><br>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Crear firma</button>
-    </form>
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">Instrucciones: En la próxima pantalla, <br>teclee CTRL + A para seleccionar todo. <br> Luego CTRL + C para Copiar y luego <br>vaya al correo y en Configuración<br>
-    en la sección firmas haga CTRL + V <br>para pegar la firma.</p>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
     
-    <p class="mb-1">Version 1.0 Creada por Luís Garcés <br> Con Bootstrap y PHP 7</p>
-
-  </footer>
-
-  </div>
+  
+    
   </body>
 </html>
