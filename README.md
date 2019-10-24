@@ -1,2 +1,2 @@
-# luisgarcesl.github.io
+# sign-generator
 Mail Sign Script
