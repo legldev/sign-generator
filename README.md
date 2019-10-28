@@ -1,2 +1,3 @@
 # sign-generator
-Mail Sign Script
+Sign Generator
+
